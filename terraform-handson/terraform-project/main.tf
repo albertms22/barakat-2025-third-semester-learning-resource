@@ -36,3 +36,14 @@ resource "aws_subnet" "barakat_one" {
     Project = "terraform-handson"
   }
 }
+
+resource "aws_instance" "barakat_instance" {
+  ami           = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI (HVM), SSD Volume Type
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.barakat_one.id
+
+  tags = {
+    Name    = "barakat_instance"
+    Project = "terraform-handson"
+  }
+}
